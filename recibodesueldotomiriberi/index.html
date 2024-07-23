@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo de Sueldo</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Recibo de Sueldos</h1>
+        <h2>Datos del empleado</h2>
+        <form id="salaryForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre y Apellido:</label>
+                    <input type="text" id="nombre" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="cuil">CUIL:</label>
+                    <input type="text" id="cuil" name="cuil">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fechaIngreso">Fecha de Ingreso:</label>
+                    <input type="date" id="fechaIngreso" name="fechaIngreso">
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" name="categoria" onchange="updateValorHora()">
+                        <option value="Oficial Especializado" data-valor="53.27">Oficial Especializado</option>
+                        <option value="Oficial" data-valor="45.39">Oficial</option>
+                        <option value="Medio Oficial" data-valor="41.85">Medio Oficial</option>
+                        <option value="Ayudante" data-valor="38.42">Ayudante</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="valorHora">Valor Hora:</label>
+                    53,27
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Horas</th>
+                        <th>Remunerativo</th>
+                        <th>Descuento</th>
+                        <th>No Remunerativo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Horas Normales</td>
+                        <td><input type="200" id="horasNormales" oninput="calculateRemunerativo()"></td>
+                        <td id="remunerativoHorasNormales"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Horas 50%</td>
+                        <td><input type="200" id="horas50" oninput="calculateRemunerativo()"></td>
+                        <td id="remunerativoHoras50"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Horas 100%</td>
+                        <td><input type="200" id="horas100" oninput="calculateRemunerativo()"></td>
+                        <td id="remunerativoHoras100"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Jubilación (%)</td>
+                        <td><input type="200" id="jubilacion" oninput="calculateDescuento()"></td>
+                        <td></td>
+                        <td id="descuentoJubilacion"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Obra Social (%)</td>
+                        <td><input type="200" id="obraSocial" oninput="calculateDescuento()"></td>
+                        <td></td>
+                        <td id="descuentoObraSocial"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Ley 23.032 (%)</td>
+                        <td><input type="200" id="ley23032" oninput="calculateDescuento()"></td>
+                        <td></td>
+                        <td id="descuentoLey23032"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Asignación Familiar</td>
+                        <td><input type="200" id="asignacionFamiliar" oninput="calculateNoRemunerativo()"></td>
+                        <td></td>
+                        <td></td>
+                        <td id="noRemunerativoAsignacion"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="totals">
+                <div>
+                    <label>Subtotal Remunerativo:</label>
+                    <td><input type="200" id="subtotalremunerativo"></td>
+                </div>
+                <div>
+                    <label>Subtotal Descuento:</label>
+                    <td><input type="200" id="subtotaldescuento"></td>
+                </div>
+                <div>
+                    <label>Subtotal No Remunerativo:</label>
+                    <td><input type="200" id="subtotalnoremunerativo"></td>
+                </div>
+            </div>
+            <div class="total-a-percibir">
+                <label>Total a Percibir:</label>
+                <span id="totalPercibir"></span>
+            </div>
+            <button type="button" onclick="window.print()">Imprimir</button>
+        </form>
+    </div>
+    <script src="recivo.js"></script>
+</body>
+</html>
